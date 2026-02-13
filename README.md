@@ -1,6 +1,8 @@
 # Farmacia
 AEE_Práctica UD5
+
 EJERCICIO . Farmacia.
+
 Se desea implementar la gestión de turnos en una farmacia para atender a los usuarios
 (clientes) que quieran realizar cualquier tipo de compra. La farmacia dispone de cuatro
 mostradores numerados del 1 al 4, éstos atenderán a los usuarios que, cuando lleguen,
