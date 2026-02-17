@@ -26,10 +26,5 @@ public class Ticket{
     public char getTipo() {
         return tipo;
     }
-
-    @Override
-    public String toString() {
-        return "Ticket n.º " + numero + " [" + tipo + "]";
-    }
     
 }

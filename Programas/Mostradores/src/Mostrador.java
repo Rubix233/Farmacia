@@ -3,7 +3,6 @@ import java.io.DataOutputStream;
 import java.io.EOFException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.net.ConnectException;
 import java.net.Socket;
 import java.net.SocketException;
 
@@ -28,21 +27,33 @@ public class Mostrador extends Thread {
     }
 
     public void run() {
+        try {
+            //Abrimos socket
+            Socket socket = new Socket(this.host, this.puerto);
+
+            //Establecemos flujo de salida
+            DataOutputStream salida = new DataOutputStream(socket.getOutputStream());
+            //Decimos que somos mostrador
+            salida.writeUTF("M");
+        
+            //Decimos que mostrador somos
+            salida.writeInt(id);
 
 
-        while (true) {
-            try {
-                Socket socket = new Socket(this.host, this.puerto);
-                ObjectInputStream entrada = new ObjectInputStream(socket.getInputStream());
-                DataOutputStream salida = new DataOutputStream(socket.getOutputStream());
-
+            //Abrimos flujo de entrada
+            ObjectInputStream entrada = new ObjectInputStream(socket.getInputStream());
+            while (true) {
+                //Avisamos que queremos nuevo ticket
+                salida.writeBoolean(true);
                 System.out.println("Mostrador " + this.id + " siguiente...");
-
-                salida.writeInt(id);
+                
+                //Guardamos el ticket que recibimos
                 Ticket ticket = (Ticket) entrada.readObject();
+                //Pillamos el tipo de consulta que es
                 char tipo = ticket.getTipo();
                 System.out.println("Mostrador " + this.id + " Empieza gestion: " + tipo);
 
+                //Atender segun tipo de consulta
                 if (tipo == 'G') {
                     Thread.sleep(2000);
                 } else {
@@ -51,24 +62,16 @@ public class Mostrador extends Thread {
                     } else {
                         Thread.sleep(1000);
                     }
+
+                    System.out.println("\t\t\t Mostrador " + this.id + " termina gestion " + tipo);
                 }
-                System.out.println("\t\t\t Mostrador " + this.id + " termina gestion " + tipo);
-
-                salida.close();
-                entrada.close();
-                socket.close();
-                
-
-            } catch (SocketException | EOFException e) {
-                System.out.println("Connection reset");
-                break;
-
-            } catch (IOException | ClassNotFoundException | InterruptedException ex) {
-                System.err.println("Error inesperado: " + ex.getMessage());
             }
 
+        } catch (SocketException | EOFException e) {
+            System.out.println("Connection reset");
+
+        } catch (IOException | ClassNotFoundException | InterruptedException ex) {
+            System.err.println("Error inesperado: " + ex.getMessage());
         }
-
-
     }
 }

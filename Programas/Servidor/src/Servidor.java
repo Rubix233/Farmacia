@@ -4,6 +4,7 @@
  */
 
 
+import java.io.DataInputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -20,25 +21,34 @@ public class Servidor {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        int puertoMostrador = 50000;
-        int puertoMaquina = 50001;
+        int puerto = 50000;
 
         Cola cola = new Cola();
 
         try {
-            ServerSocket atenderMostrador = new ServerSocket(puertoMostrador);
-            ServerSocket atenderMaquina = new ServerSocket(puertoMaquina);
-            System.out.println("Server escuchando");
-            
-            new HiloMaquina(atenderMaquina,cola).start();
+            //Abrimos puerto
+            ServerSocket serverSocket = new ServerSocket(puerto);
+
+            System.out.println("Server escuchando por el puerto: " + puerto);
             
             while(true){
-                Socket socketMostrador = atenderMostrador.accept();
-                new HiloMostrador(socketMostrador, cola).start();
+                //Acepta conexion
+                Socket socket = serverSocket.accept();
+                String quien;
+                
+                //Abrimos canal de entrada
+                DataInputStream entrada = new DataInputStream(socket.getInputStream());
+                
+                //Leemos quien se ha conectado
+                quien = entrada.readUTF();
+                
+                //Arrancamos hilo correspondiente
+                if(quien.equals("U")){
+                    new HiloUsuario(socket, cola).start();
+                } else {
+                    new HiloMostrador(socket,cola).start();
+                }     
             }
-            
-            
-
         } catch (IOException ex) {
             Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE, null, ex);
         }

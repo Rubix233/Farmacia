@@ -14,6 +14,7 @@ public class Mostradores {
         String host = "localhost";
         int mostradores = 4;
 
+        //Arrancamos todos los mostradores
         for (int i = 1; i <= mostradores; i++) {
             new Mostrador(i, host, puerto).start();
         }
