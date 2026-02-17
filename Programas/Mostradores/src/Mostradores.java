@@ -11,6 +11,7 @@ public class Mostradores {
 
     public static void main(String[] args) {
         int puerto = 50000;
+        //String host = "172.22.113.6";
         String host = "localhost";
         int mostradores = 4;
 

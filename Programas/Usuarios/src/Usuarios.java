@@ -14,6 +14,7 @@ public class Usuarios {
 
     public static void main(String[] args) {
         int puerto = 50000;
+        //String host = "172.22.113.6";
         String host = "localhost";
         //Usuarios a simular
         char[] tipos = {'G', 'H', 'G', 'O', 'H', 'O', 'O', 'G', 'O', 'H', 'H', 'O'};
