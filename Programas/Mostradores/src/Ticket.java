@@ -7,7 +7,7 @@
 
 /**
  *
- * @author Andy
+ * @author Fran
  */
 public class Ticket{
     

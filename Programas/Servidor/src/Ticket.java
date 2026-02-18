@@ -8,7 +8,8 @@ import java.io.Serializable;
 
 /**
  *
- * @author Andy Jan
+ * @author Fran
+ * @review Andy
  */
 public class Ticket implements Serializable{
     

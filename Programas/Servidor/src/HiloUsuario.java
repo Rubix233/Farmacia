@@ -16,7 +16,9 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Administrador
+ * @author Fran
+ * @review Andy
+ * @cambio Andy - Hilo crea/destruye por cada usuario. Antes era persistete y atendia secuencialmente
  */
 public class HiloUsuario extends Thread {
 

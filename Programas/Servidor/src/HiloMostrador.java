@@ -14,7 +14,9 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Andy
+ * @author Fran
+ * @Review Andy
+ * @cambio Andy - Hilos persistentes (antes se creaban y destruian)
  */
 public class HiloMostrador extends Thread {
 

@@ -12,7 +12,8 @@ import java.net.SocketException;
  */
 /**
  *
- * @author Andy
+ * @author Fran
+ * @review Andy
  */
 public class Mostrador extends Thread {
 

@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 /**
  *
  * @author Andy
+ * @review Fran
  */
 public class Usuarios {
 
