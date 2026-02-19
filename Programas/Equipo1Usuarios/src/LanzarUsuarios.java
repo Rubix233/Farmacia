@@ -11,7 +11,7 @@ import java.util.logging.Logger;
  * @author Andy
  * @review Fran
  */
-public class Usuarios {
+public class LanzarUsuarios {
 
     public static void main(String[] args) {
         int puerto = 50000;
@@ -29,7 +29,7 @@ public class Usuarios {
             try {
                 Thread.sleep(200);
             } catch (InterruptedException ex) {
-                Logger.getLogger(Usuarios.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(LanzarUsuarios.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }

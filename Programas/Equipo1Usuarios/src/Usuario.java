@@ -62,9 +62,9 @@ public class Usuario extends Thread {
         } catch (SocketException e) {
             System.out.println("Conection reset");
         } catch (UnknownHostException ex) {
-            Logger.getLogger(Usuarios.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LanzarUsuarios.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(Usuarios.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LanzarUsuarios.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

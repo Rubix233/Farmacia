@@ -8,7 +8,7 @@
  * @author Fran
  * @review Andy
  */
-public class Mostradores {
+public class LanzarMostradores {
 
     public static void main(String[] args) {
         int puerto = 50000;
